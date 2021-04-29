@@ -9,40 +9,37 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       surName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       suscription: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       city: {
-        type: Sequelize.STRING
-      },
-      city: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       zip_code: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       province: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       country: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       phone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

@@ -6,14 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
   
     static associate(models) {
-      this.hasMany(models.cart_root, {
+      this.hasMany(models.Cart_root, {
         foreignKey: "customerId",
         sourceKey: "id"
       });
-      this.belongsTo(models.order, {
-        foreignKey: "customerId",
-        souceKey: "id"
-      })
     }
   };
 
@@ -24,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     suscription: DataTypes.BOOLEAN,
     address: DataTypes.STRING,
-    city: DataTypes.STRING,
     city: DataTypes.STRING,
     zip_code: DataTypes.INTEGER,
     province: DataTypes.STRING,

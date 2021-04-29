@@ -13,6 +13,8 @@ services:
             MYSQL_ROOT_PASSWORD: 'password'
         expose:
         - '3306'
+        volumes:
+            - ./data/mysql:/var/lib/mysql
   phpmyadmin:
         image: phpmyadmin
         depends_on:

@@ -6,14 +6,13 @@ module.exports = (sequelize, DataTypes) => {
   class Cart extends Model {
     
     static associate(models) {
-      this.hasMany(models.product, {
+      this.belongsTo(models.Product, {
         foreignKey: "cartId",
         sourceKey: "id"
       });
-      this.belongsTo(models.cart_root, {
+      this.belongsTo(models.Cart_root, {
         foreignKey: "cartId",
         sourceKey: "id"
-
       })
     }
   };

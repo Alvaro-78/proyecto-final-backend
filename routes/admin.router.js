@@ -19,7 +19,7 @@ router.post('/login',async (req,res) => {
 
     try {
         const {email,password} = req.body;
-        const jwt = await adminrController.login(email,password);
+        const jwt = await adminController.login(email,password);
         const token = jwt.token
         const admin = jwt.admin 
         res.json({token, admin})

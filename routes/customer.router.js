@@ -56,7 +56,7 @@ router.get('/logout/:id', async(req,res) => {
     try {
         const id = req.params.id;
         const user =  await customerController.logOut(id);
-        const status = `Eat a lot of sugar we want see you as soon as possible, ${user.firstName}`;
+        const status = `Eat a lot of sugar we want see you as soon as possible, ${user.name}`;
         
         res.json({ status, id, date:new Date }); 
         

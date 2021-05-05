@@ -13,6 +13,7 @@ class CustomerController {
 
     // Create Customer
     async createCustomer(customer) {
+		
         let customerEmail = customer.email
         console.log(customer.email)
         console.log("Soy el customerController",Customer)
@@ -24,9 +25,9 @@ class CustomerController {
         return Customer.create(customer)
     };
   
-   async logOut(id) {
-        return Client.findByPk(id);
-      };
+	async logOut(id) {
+        return Customer.findByPk(id);
+	};
   
     // CREATE LOGIN
   

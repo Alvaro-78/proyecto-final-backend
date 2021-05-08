@@ -1,12 +1,12 @@
 const router = require('express').Router({mergeParams:true});
-const adminController = require('../controllers/adminController');
+const adminController = require('../controllers/admin.controller');
 
 
 router.post('/', async (req,res) => {
 
     try{
-        console.log("IEEEEEEEE",req.body)
         res.json(await adminController.createAdmin(req.body));
+
     }catch(error){
         res.status(500).json({
           error: 'error',
@@ -42,5 +42,18 @@ router.get('/logout/:id', async(req,res) => {
         console.log(error)
     };
 });
+
+router.post('/create-product', async(req,res) => {
+    try {
+        res.json(await adminController.createProduct(req.body));
+        console.log("dentro del post",res.json)
+    } catch (error) {
+        // res.status(500).json({
+        //     error: 'error',
+        //     message: 'error'
+        // });  
+        console.log(error,"Esto es el ERRORRRR")
+    }
+})
 
 module.exports = router;

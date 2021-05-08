@@ -13,10 +13,9 @@ class CustomerController {
 
     // Create Customer
     async createCustomer(customer) {
+      console.log(customer)
 		
         let customerEmail = customer.email
-        console.log(customer.email)
-        console.log("Soy el customerController",Customer)
         let customerExist = await Customer.findOne({where:{email:customerEmail}})
         if(customerExist) {
         return;
@@ -25,9 +24,7 @@ class CustomerController {
         return Customer.create(customer)
     };
   
-	async logOut(id) {
-        return Customer.findByPk(id);
-	};
+	
   
     // CREATE LOGIN
   

@@ -1,4 +1,4 @@
-const {Admin} = require('../models')
+const {Admin, Product} = require('../models');
 const bcrypt = require( 'bcryptjs' );
 const jwt = require( 'jsonwebtoken' );
 const secretWord = process.env.JWT_SECRET || 'admin'
@@ -8,8 +8,7 @@ class AdminController {
     async createAdmin(admin) {
 
         let adminEmail = admin.email
-        console.log("WUAAAAAA")
-        console.log("Soy el adminController",Admin)
+        console.log(admin.email)
         let adminExist = await Admin.findOne({where:{email:adminEmail}})
         if(adminExist) {
         return;
@@ -44,19 +43,30 @@ class AdminController {
 
     async logOut(id) {
         return Admin.findByPk(id);
-      };
+    };
     
       // Update Admin
-      async updateAdmin(admin, id) {
+    async updateAdmin(admin, id) {
         return Admin.update(admin,{where:{id}})
-      };
+    };
     
       // Delete Admin
-      async deleteAdmin(id) {
+    async deleteAdmin(id) {
         return Admin.destroy({where:{id}})
-      };
+    };
 
+    //Create Products
 
+    async createProduct(product) {
+        console.log(product.name)
+        let productName = product.name
+
+        // let productExist = await Product.findOne({where:{product:productName}})
+        // if(productExist) {
+        //     return;
+        // }
+        return Product.create(product)
+    }
 
 }
 

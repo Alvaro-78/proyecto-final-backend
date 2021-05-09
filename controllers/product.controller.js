@@ -1,6 +1,16 @@
-const {Product} = require('../models/product');
+const {Product} = require('../models');
 
 class ProductController {
+
+    //List Products
+    async indexAll() {
+        return Product.findAll();
+    }
+
+
+    async updateProduct(id) {
+        return productController.updateProduct({where:{id}})
+    }
 
 };
 

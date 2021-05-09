@@ -13,8 +13,7 @@ class CustomerController {
 
     // Create Customer
     async createCustomer(customer) {
-      console.log(customer)
-		
+		console.log("dentro de createCustomer",customer)
         let customerEmail = customer.email
         let customerExist = await Customer.findOne({where:{email:customerEmail}})
         if(customerExist) {
@@ -59,11 +58,13 @@ class CustomerController {
     };
   
     // Update Customer
+    
     async updateCustomer(customer, id) {
       return Customer.update(customer,{where:{id}})
     };
   
     // Delete Customer
+
     async deleteCustomer(id) {
       return Customer.destroy({where:{id}})
     };

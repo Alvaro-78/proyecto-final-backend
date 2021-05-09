@@ -8,13 +8,9 @@ const customerController = require('../controllers/customer.controller');
 router.post('/', async (req,res) => {
 
     try{
-        console.log("IEEEEEEEE",req.body)
         res.json(await customerController.createCustomer(req.body));
-    }catch(error){
-        res.status(500).json({
-          error: 'error',
-          message: 'error'
-        });
+    }catch (error) {
+        console.log(error)
     };
 });
 

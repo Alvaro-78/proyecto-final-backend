@@ -73,6 +73,18 @@ router.get('/logout/:id', async(req,res) => {
     };
 });
 
+router.get('/', async(req,res) => {
+    
+    try {
+        res.json(await adminController.indexAll());
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+          error: 'error',
+          message: 'error'
+        });
+    }
+})
 
 
 // Admin CRUD for Products
@@ -97,20 +109,18 @@ router.get('/products', async(req,res) => {
     }
 })
 
-//List all Products
+router.delete('/products/:id', async (req,res) => {
+    try{
+      res.json(await adminController.deleteProduct(req.params.id));
+    }catch(error){
+      console.log(error);
+      res.status(500).json({
+        error: 'error',
+        message: 'error'
+      });
+    };
+  });
 
-// router.get('/products', async(req,res) => {
-    
-//     try {
-//         res.json(await productController.indexAll());
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({
-//           error: 'error',
-//           message: 'error'
-//         });
-//     }
-// })
 
 
 module.exports = router;

@@ -7,8 +7,8 @@ class AdminController {
 
     async createAdmin(admin) {
 
+        console.log("crea un admin mamón")
         let adminEmail = admin.email
-        console.log(admin.email)
         let adminExist = await Admin.findOne({where:{email:adminEmail}})
         if(adminExist) {
         return;
@@ -41,6 +41,12 @@ class AdminController {
         }
     };   
 
+    async indexAll(admin) {
+        return Admin.findAll(admin);
+    }
+
+
+    // LogOut Admin
     async logOut(id) {
         return Admin.findByPk(id);
     };
@@ -55,11 +61,13 @@ class AdminController {
         return Admin.destroy({where:{id}})
     };
 
+    // Admin CRUD with Products
     //Create Products
 
     async createProduct(product) {
-        console.log(product.name)
+    
         let productName = product.name
+    
 
         // let productExist = await Product.findOne({where:{product:productName}})
         // if(productExist) {
@@ -68,6 +76,17 @@ class AdminController {
         return Product.create(product)
     }
 
+    //Get all Customers
+
+    async indexAllProduct() {
+        return Product.findAll();
+    }
+
+    // Delete Products
+
+    async deleteProduct(id) {
+        return Product.destroy({where:{id}})
+    };
 }
 
 let adminController = new AdminController();

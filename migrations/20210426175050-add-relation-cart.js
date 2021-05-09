@@ -2,18 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return[queryInterface.addColumn(
-      'Carts',
-      'cart_rootId',
-      {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Cart_roots',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
-      }),
+    return[
       queryInterface.addColumn(
         'Carts', 
         'productId', 
@@ -26,6 +15,18 @@ module.exports = {
           onUpdate: 'CASCADE',
           onDelete: 'SET NULL'
         }),
+        queryInterface.addColumn(
+          'Carts', 
+          'customerId', 
+          {
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'Customers',
+                key: 'id' 
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'SET NULL'
+          }),
   
     ]
   },

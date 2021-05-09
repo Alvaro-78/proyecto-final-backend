@@ -14,6 +14,18 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       }),
+      queryInterface.addColumn(
+        'Orders',
+        'productId', 
+        {
+          type: Sequelize.INTEGER,
+          references: {
+              model: 'Products', 
+              key: 'id' 
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'SET NULL'
+        }),
     ];
   },
 

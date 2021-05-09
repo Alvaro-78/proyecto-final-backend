@@ -1,6 +1,6 @@
 const router = require('express').Router({mergeParams:true});
 const adminController = require('../controllers/admin.controller');
-
+const productController = require ('../controllers/product.controller');
 
 router.post('/', async (req,res) => {
 
@@ -12,6 +12,35 @@ router.post('/', async (req,res) => {
           error: 'error',
           message: 'error'
         });
+    };
+});
+
+// UPDATE ADMIN
+
+router.put('/:id', async (req,res) => {
+    try{
+      const body = req.body;
+      res.json(await adminController.updateAdmin(body, req.params.id));
+    }catch(error){
+      console.log(error);
+      res.status(500).json({
+        error: 'error',
+        message: 'error'
+      });
+    };
+});
+
+  // DELETE CUSTOMER
+
+router.delete('/:id', async (req,res) => {
+    try{
+      res.json(await adminController.deleteAdmin(req.params.id));
+    }catch(error){
+      console.log(error);
+      res.status(500).json({
+        error: 'error',
+        message: 'error'
+      });
     };
 });
 
@@ -30,6 +59,7 @@ router.post('/login',async (req,res) => {
     };
 });
 
+
 router.get('/logout/:id', async(req,res) => {
     try {
         const id = req.params.id;
@@ -43,17 +73,44 @@ router.get('/logout/:id', async(req,res) => {
     };
 });
 
+
+
+// Admin CRUD for Products
+
+//Create products
+
 router.post('/create-product', async(req,res) => {
     try {
         res.json(await adminController.createProduct(req.body));
-        console.log("dentro del post",res.json)
     } catch (error) {
-        // res.status(500).json({
-        //     error: 'error',
-        //     message: 'error'
-        // });  
+         
         console.log(error,"Esto es el ERRORRRR")
     }
 })
+
+router.get('/products', async(req,res) => {
+    
+    try {
+        res.json(await adminController.indexAllProduct());
+    } catch (error) {
+        console.log("error del get",error);
+    }
+})
+
+//List all Products
+
+// router.get('/products', async(req,res) => {
+    
+//     try {
+//         res.json(await productController.indexAll());
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json({
+//           error: 'error',
+//           message: 'error'
+//         });
+//     }
+// })
+
 
 module.exports = router;

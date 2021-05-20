@@ -22,6 +22,11 @@ Data Base Diagram:
 - [React](https://es.reactjs.org/) - JavaScript library 
 - [Redux](https://es.redux.js.org/) - JavaScript library
 
+Run backend endpoints in Postman:
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0ab528ce1e3b0d738e44)
+
+
 ## TECNOLOGIES
 
 <h3 align="left">Languages and Tools:</h3>
@@ -42,8 +47,15 @@ clone this repo
 npm install
 
 ```
+```
 docker-compose up --build
 ```
+```
 and npm start to up nodemon
+
+
+
+
+
 
 
